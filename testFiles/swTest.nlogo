@@ -19,7 +19,7 @@
 ;::::::::::::::::::::!!!!!!!!!   REQUIRED CODE  !!!!!!!!!::::::::::::::::::::
 ;------------------------------------------------------------------------------------
  ;;Use the bitmap extension.
- ;;extensions[bitmap]
+ ;extensions[bitmap]
 
   patches-own [
      baseColor

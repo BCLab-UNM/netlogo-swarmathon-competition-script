@@ -1,0 +1,21 @@
+swTest.nlogo results
+Random: 500.0
+Square: 500.0
+
+swTest.nlogo results
+Random: 500.0
+Square: 500.0
+
+swTest.nlogo results
+Random: 500.0
+Square: 500.0
+
+swTest.nlogo results
+Random: 500.0
+Square: 500.0
+
+swTest.nlogo results
+Random: 0.0
+Square: 0.0
+Total: 1000.0
+
