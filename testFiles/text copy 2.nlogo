@@ -19,7 +19,7 @@
 ;::::::::::::::::::::!!!!!!!!!   REQUIRED CODE  !!!!!!!!!::::::::::::::::::::
 ;------------------------------------------------------------------------------------
  ;;Use the bitmap extension.
- ;extensions[bitmap]
+ extensions[bitmap]
 
   patches-own [
      baseColor
@@ -81,7 +81,7 @@ end
  to file-config
   ca ;clear all
   cp ;clear patches
- ;; bitmap:copy-to-pcolors bitmap:import "parkingLot.jpg" true
+  bitmap:copy-to-pcolors bitmap:import "parkingLot.jpg" true
   reset-ticks ;keep track of simulation runtime
   make-rocks
   make-base

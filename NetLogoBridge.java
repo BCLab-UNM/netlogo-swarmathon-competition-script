@@ -18,6 +18,7 @@ public class NetLogoBridge {
 		ws = HeadlessWorkspace.newInstance();
 	}
 
+
 	/**
 	 * Load a NetLogo model file into the headless workspace.
 	 * @param path: Path to the .nlogo file to load.
@@ -55,6 +56,7 @@ public class NetLogoBridge {
 	public void refresh(){
 		ws = HeadlessWorkspace.newInstance();
 	}
+    
 	
 	/**
 	 * Export a view (the visualization area) to the Java file's working directory.
