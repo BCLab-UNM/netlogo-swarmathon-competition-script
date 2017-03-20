@@ -16,3 +16,21 @@ Square: 0.0
 NASA logo0.0
 Total: 0.0
 
+text copy 2.nlogo results
+Random: 0.0
+Square: 0.0
+NASA logo0.0
+Total: 0.0
+
+text copy.nlogo results
+Random: 0.0
+Square: 0.0
+NASA logo0.0
+Total: 0.0
+
+text.nlogo results
+Random: 0.0
+Square: 0.0
+NASA logo0.0
+Total: 0.0
+
