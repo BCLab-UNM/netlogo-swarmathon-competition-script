@@ -6,20 +6,16 @@
  ;; The University of New Mexico
  ;; Swarmathon 5: Competition
  ;; version 1.0
- ;; Last Revision 01/13/2017
+ ;; Last Revision 03/23/2017
 ;----------------------------------------------------------------------------------------------
-  ;;
-  ;;Replace this comment with 
-  ;;team 
-  ;;mentor 
-  ;;high school names
+;;;;;;;;;TEST FILE FOR CHECKER SCRIPT;;;;;;;;;;;;;;;;;;;;
 ;---------------------------------------------------------------------------------------------- 
  
 ;------------------------------------------------------------------------------------
 ;::::::::::::::::::::!!!!!!!!!   REQUIRED CODE  !!!!!!!!!::::::::::::::::::::
 ;------------------------------------------------------------------------------------
  ;;Use the bitmap extension.
- ;extensions[bitmap]
+ extensions[bitmap]
 
   patches-own [
      baseColor
@@ -41,13 +37,13 @@
  ;------------------------------------------------------------------------------------
 ;;Write the setup procedure.
 to setup
+  ca
   file-config
    ;;You may add additional setup commands below this comment.
    create-turtles 6 [
      setxy random-xcor random-ycor 
      set size 5
      ]
-
 end
 
 
@@ -62,7 +58,20 @@ end
  ;------------------------------------------------------------------------------------
  ;;Write the robot-control procedure.
 to robot-control
-  ask turtles [fd 1]
+  ask turtles[
+    ifelse ticks mod 1000 = 0[
+      move-to turtle 0
+      hatch 1
+      ask turtle 0[
+        ask one-of other turtles[die]
+        ask patch-ahead 3[sprout 1]
+        ]
+    ]
+    [
+      rt random 180
+      fd 1
+      ]
+  ]
   
   ;;tick needs to come last in your robot-control procedure.
   ;------------------------------------------------------------------------------------
@@ -84,7 +93,7 @@ end
  to file-config
   ca ;clear all
   cp ;clear patches
-  ;bitmap:copy-to-pcolors bitmap:import "parkingLot.jpg" true
+  bitmap:copy-to-pcolors bitmap:import "parkingLot.jpg" true
   reset-ticks ;keep track of simulation runtime
   make-rocks
   make-base
