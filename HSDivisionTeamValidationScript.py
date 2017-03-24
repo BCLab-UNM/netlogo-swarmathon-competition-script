@@ -1,8 +1,8 @@
 ##Elizabeth E. Esterly
 ##The University of New Mexico
 ##NASA Swarmathon HS Division 2017
-##team validation script
-##last revised 03/17/2017
+##team validation script beta 1.0
+##last revised 03/23/2017
 
 #Python 2.7.12
 
@@ -12,7 +12,6 @@ import sys
 
 global name
 name = sys.argv[1]
-print name
 
 def checkFor(code):
     if code in open(name).read():
@@ -21,10 +20,10 @@ def checkFor(code):
         ok()
     
 def illegalCommandError(command):
-    print "WARNING! Illegal command " + command + "found.\n"
+    print "WARNING! Illegal command " + command + " found.\n"
 
 def ok():
-    print "OK\n"
+    print "OK\n\n"
 
 def genericError(errorMsg):
     print "WARNING! " + errorMsg
@@ -35,38 +34,52 @@ def genericError(errorMsg):
 #512 resources
 #Use this script to check if your code violates any rules specified in [Sw5] before submitting your code for the competition. The code will run with whatever values you have set on the slider bars.
 #Put your netlogo file in the same directory with the files used here.
-#Run this script from the command line: python HSDivisionTeamValidationScript.py -yourfilename.nlogo- 
+#Run this script from the command line: python HSDivisionTeamValidationScript.py yourfilename.nlogo 
 
-#open bridge to Netlogo and set random seed
+#open bridge to Netlogo
 gw = JavaGateway()
 bridge = gw.entry_point
-bridge.openModel(name)
-bridge.command("random-seed 1988")
 
 #get file info and open it
-
+print "This script checks for rules violations in your program.\n If you are unclear on the rules, please review them in [Sw5].\n"
 print "Opening" + name + ".\n"
+if not name.endswith("_sw17.nlogo"):
+    print "Your file is named incorrectly.\n"
+else:
+    ok()
 
-#setup the file
-print "Testing setup function...\n"
+#cleaning operations
+cleaned = open('tested_' + name, 'w')
+with open (name, 'r+') as f:
+    while (True):
+        c = f.readline()
+        if c != "  bitmap:copy-to-pcolors bitmap:import \"parkingLot.jpg\" true\n" and c != " extensions[bitmap]\n":
+            cleaned.write(c)
+        if not c:
+            break
+    cleaned.close()
+
+#open and setup the file
+print "Testing setup functions...\n"
+bridge.openModel('tested_' + name)
+bridge.command("random-seed 1988")
 bridge.command("setup")
-bridge.exportView("ttt")
 
 #6 robots
 print "Test for exactly 6 robots: "
 agentCount = bridge.report("count turtles")
 print agentCount
 if agentCount != 6:
-    genericError("You must have 6 robots.\n")
+    genericError("You must have 6 robots.\n\n")
 else:
     ok()
 
 #robots spawn at the origin
 print "Test for robots spawning at origin.\n"
-atOrigin = bridge.report("count turtles with [xcor != 0 and ycor != 0]")
-print atOrigin
-if atOrigin == "illegal placement":
-    genericError("All 6 robots must begin at (0,0).\n")
+notAtOrigin = bridge.report("count turtles with [xcor != 0 and ycor != 0]")
+if notAtOrigin > 0:
+    print str(notAtOrigin) + " robots were not spawned at (0, 0)."
+    genericError("All 6 robots must begin at (0,0).\n\n")
 else:
     ok()
 
@@ -77,15 +90,16 @@ minX = bridge.report("min-pxcor")
 maxY = bridge.report("max-pycor")
 minY = bridge.report("min-pycor")
 if maxX != 50 or maxY != 50 or minX != -50 or minY != -50:
-    print genericError("Your max x and y should be 50 and your min x and y should be -50.\n")
+    print genericError("Your max x and y should be 50 and your min x and y should be -50.\n\n")
 else:
     ok()
 
 #Check for illegal commands in the file:
-print "Checking for illegal commands:\n\n"
+print "Checking for illegal commands...\n"
 illegalCommands = ['move-to', 'setxy', 'hatch', 'die', 'sprout']
 fileProblem = False
 for i in illegalCommands:
+    print i
     if checkFor(i):
         fileProblem = True
 
@@ -94,10 +108,13 @@ if fileProblem:
 
 #robot-control, run for 3600 ticks
 print "Running program for 3600 ticks.\n"
-#for i in range (0, 3600):
-#    bridge.command("robot-control")
+for i in range (0, 3600):
+    bridge.command("robot-control")
+print "Complete."
+bridge.closeModel()
+gw.shutdown()
 
-#export stats and a view of the screen when finished
+
 
 
 
