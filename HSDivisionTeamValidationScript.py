@@ -53,7 +53,7 @@ cleaned = open('tested_' + name, 'w')
 with open (name, 'r+') as f:
     while (True):
         c = f.readline()
-        if c != "  bitmap:copy-to-pcolors bitmap:import \"parkingLot.jpg\" true\n" and c != " extensions[bitmap]\n":
+        if "bitmap:copy-to-pcolors bitmap:import \"parkingLot.jpg\" true\n" not in c and "extensions[bitmap]\n" not in c:
             cleaned.write(c)
         if not c:
             break
