@@ -1,6 +1,6 @@
 # netlogo-swarmathon-competition-script
 Teams participating in the 2017 Swarmathon High School Division can use this script to validate their code and check for illegal commands and other rules violations. This script is not meant to be a direct substitute for precise following of the rules outlined in BC-Lab-UNM/netlogo-swarmathon. Please be sure to review the rules and complete the checklist found in [Sw5] prior to submitting your competition code. <br><br>
-This script was written in Python 2.7x and Java 1.8x on macOS Sierra and is based on https://github.com/dmasad/Py2NetLogo, to which I have made some contributions. It has not been tested on other versions of Python, Java, or Linux or Windows. The included bash script is tailored specifically for use with macOS and modifications will need to be made to run it in Linux or Windows.<br><br>
+This script was written in Python 2.7x and Java 1.8x on macOS Sierra. The NetLogo Bridge framework is derived from https://github.com/dmasad/Py2NetLogo, to which I have made some contributions. It has not been tested on other versions of Python, Java, or Linux or Windows. The included bash script is tailored specifically for use with macOS and modifications will need to be made to run it in Linux or Windows.<br><br>
 <b><u>contents</b></u><br>
 <ul>
 <li>HSDivisionTeamValidationScript.py</li>
