@@ -21,7 +21,7 @@ OPTIONAL<br>
 <b><u>how to use it: macOS</b></u><br>
 <ul>
 <li>Locate the <code>py4j</code> and the <code>Netlogo</code> .jar files.</li>
-<li>Modify the <code>./osxlauncher.sh</code> script. Change the script to reflect the path to the jar files on your computer. Separate the paths with a colon.</li>
+<li>Modify the <code>./osxlauncher.sh</code> script. Change the script to reflect the path to the jar files on your computer. Separate the paths with a colon. I renamed Netlogo 5.2 to Netlogo5.2 and the script reflects this; you may want to do the same.</li>
 <li>Place your Netlogo file in the same directory as the script files.</li>
 <li>Open 2 Terminal windows.</li>
 <li>Navigate to the directory where the script files and your source .nlogo file are located in both Terminal windows.</li>
