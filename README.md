@@ -44,7 +44,8 @@ Complete.<br>
 </code>
 <br>
 <ul>
-<li>Now test your .nlogo file by replacing <code>test.nlogo</code> with <i><code>yourFileName</i>.nlogo</code></li><br>
+<li>Now test your .nlogo file by replacing <code>test.nlogo</code> with <i><code>yourFileName</i>.nlogo</code></li>
+</ul><br>
 
 <b><u>Windows Instructions</u></b><br>
 <ul>
